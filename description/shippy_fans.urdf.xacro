@@ -47,7 +47,7 @@
             xyz="-0.315 0.3 -0.15"
             rpy="3.1416 -0.98049 1.5708" />
         <parent
-            link="base_link" />
+            link="base_link_reference" />
         <child
             link="Link_Left_Fan" />
         <axis
@@ -100,7 +100,7 @@
             xyz="0.315 0.3 -0.15"
             rpy="3.1416 1.2132 -1.5708" />
         <parent
-            link="base_link" />
+            link="base_link_reference" />
         <child
             link="Link_Right_Fan" />
         <axis

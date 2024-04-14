@@ -1,7 +1,17 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
   <link
     name="base_link">
+  </link>
+  <!-- Joint connecting dummy_link to base_link -->
+  <joint name="base_link_reference" type="fixed">
+    <parent link="base_link" />
+    <child link="base_link_reference" />
+  </joint>
+
+  <link
+    name="base_link_reference">
     <inertial>
       <origin
         xyz="-6.99440505513849E-15 1.10103519706159 0.00344258551504817"
@@ -87,7 +97,7 @@
       xyz="-0.535000000000017 2.01 -0.2"
       rpy="1.5707963267949 0 0" />
     <parent
-      link="base_link" />
+      link="base_link_reference" />
     <child
       link="Link_Side_Left" />
     <axis
@@ -140,7 +150,7 @@
       xyz="0.324999999999983 2.01 -0.2"
       rpy="1.5707963267949 0 0" />
     <parent
-      link="base_link" />
+      link="base_link_reference" />
     <child
       link="Link_Side_Right" />
     <axis
@@ -193,7 +203,7 @@
       xyz="-0.375000000000015 1.76 0"
       rpy="1.5707963267949 0 -1.57079632679489" />
     <parent
-      link="base_link" />
+      link="base_link_reference" />
     <child
       link="Link_Left_Metal" />
     <axis
@@ -246,7 +256,7 @@
       xyz="0.324999999999985 1.76000000000001 0"
       rpy="1.5707963267949 0 -1.57079632679489" />
     <parent
-      link="base_link" />
+      link="base_link_reference" />
     <child
       link="Link_Right_Metal" />
     <axis
@@ -299,7 +309,7 @@
       xyz="-0.325000000000007 0.901375000000002 0.331387406397839"
       rpy="1.5707963267949 0 0" />
     <parent
-      link="base_link" />
+      link="base_link_reference" />
     <child
       link="Link_Top_Metal" />
     <axis
@@ -352,7 +362,7 @@
       xyz="0 0.702000000000005 -0.0100000000000001"
       rpy="1.5707963267949 0 -3.14159265358979" />
     <parent
-      link="base_link" />
+      link="base_link_reference" />
     <child
       link="Link_Lackaging" />
     <axis

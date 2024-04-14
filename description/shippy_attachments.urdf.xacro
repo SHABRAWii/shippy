@@ -47,7 +47,7 @@
       xyz="0 1.54252445791832 -0.10004"
       rpy="1.5707963267949 0 -1.57079632679489" />
     <parent
-      link="base_link" />
+      link="base_link_reference" />
     <child
       link="Link_Robot_Front_Attachments" />
     <axis
