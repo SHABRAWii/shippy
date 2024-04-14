@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Assem3.SLDASM">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-6.99440505513849E-15 1.10103519706159 0.00344258551504817"
+        rpy="0 0 0" />
+      <mass
+        value="2.17957713322353" />
+      <inertia
+        ixx="0.17899850438671"
+        ixy="5.05428036749201E-16"
+        ixz="-2.24166310386283E-16"
+        iyy="0.130111023279005"
+        iyz="3.03303960572226E-05"
+        izz="0.290729649302988" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Link_Robot_Front_Attachments">
+    <inertial>
+      <origin
+        xyz="-0.110993083185633 -0.0209688861158468 -0.00942961030516409"
+        rpy="0 0 0" />
+      <mass
+        value="0.973903374699208" />
+      <inertia
+        ixx="0.0123670881249229"
+        ixy="0.00152634507018076"
+        ixz="9.35071385864023E-07"
+        iyy="0.0163784182374264"
+        iyz="4.88372744349489E-06"
+        izz="0.00726600026096406" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Robot_Front_Attachments.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9 0.81 0.51 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Robot_Front_Attachments.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Robot_Front_Attachments"
+    type="fixed">
+    <origin
+      xyz="0 1.54252445791832 -0.10004"
+      rpy="1.5707963267949 0 -1.57079632679489" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Robot_Front_Attachments" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Side_Left">
+    <inertial>
+      <origin
+        xyz="0.104919265146604 0.101118372719001 0.996926007551461"
+        rpy="0 0 0" />
+      <mass
+        value="81.8084350434166" />
+      <inertia
+        ixx="26.245543933313"
+        ixy="-2.3094582466397E-05"
+        ixz="-0.00577226346636961"
+        iyy="26.2724801461104"
+        iyz="-0.0881450822013043"
+        izz="0.567958263795021" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.286274509803922 0.662745098039216 0.329411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Side_Left"
+    type="fixed">
+    <origin
+      xyz="-0.535000000000017 2.01 -0.2"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Side_Left" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Side_Right">
+    <inertial>
+      <origin
+        xyz="0.104919265146604 0.101118372719001 0.996926007551461"
+        rpy="0 0 0" />
+      <mass
+        value="81.8084350434166" />
+      <inertia
+        ixx="26.245543933313"
+        ixy="-2.30945824663705E-05"
+        ixz="-0.00577226346637043"
+        iyy="26.2724801461104"
+        iyz="-0.0881450822013042"
+        izz="0.567958263795021" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.286274509803922 0.662745098039216 0.329411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Side_Right"
+    type="fixed">
+    <origin
+      xyz="0.324999999999983 2.01 -0.2"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Side_Right" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Left_Metal">
+    <inertial>
+      <origin
+        xyz="0.565954361793534 0.132380012619458 -0.0180374997719361"
+        rpy="0 0 0" />
+      <mass
+        value="1.86329947852884" />
+      <inertia
+        ixx="0.0303193760291818"
+        ixy="-0.0118768193945372"
+        ixz="-1.0311791416408E-17"
+        iyy="0.158217746859194"
+        iyz="-1.6230919151769E-17"
+        izz="0.187968319674363" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Left_Metal.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.667 0.098 0.098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Left_Metal.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Left_Metal"
+    type="fixed">
+    <origin
+      xyz="-0.375000000000015 1.76 0"
+      rpy="1.5707963267949 0 -1.57079632679489" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Left_Metal" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Right_Metal">
+    <inertial>
+      <origin
+        xyz="0.565954361793534 0.132380012619458 -0.0319625002280638"
+        rpy="0 0 0" />
+      <mass
+        value="1.86329947852884" />
+      <inertia
+        ixx="0.0303193760291818"
+        ixy="-0.0118768193945371"
+        ixz="-1.28996412691275E-18"
+        iyy="0.158217746859193"
+        iyz="-9.15073055917561E-18"
+        izz="0.187968319674362" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Right_Metal.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.667 0.098 0.098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Right_Metal.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Right_Metal"
+    type="fixed">
+    <origin
+      xyz="0.324999999999985 1.76000000000001 0"
+      rpy="1.5707963267949 0 -1.57079632679489" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Right_Metal" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Top_Metal">
+    <inertial>
+      <origin
+        xyz="0.325 0.0100000000000001 -0.18"
+        rpy="0 0 0" />
+      <mass
+        value="1.82" />
+      <inertia
+        ixx="0.0344933333333333"
+        ixy="-4.04776950599612E-17"
+        ixz="4.26711188683265E-17"
+        iyy="0.127111833333333"
+        iyz="-1.68612496062809E-17"
+        izz="0.0927398333333331" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Top_Metal.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9 0.15 0.15 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Top_Metal.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Top_Metal"
+    type="fixed">
+    <origin
+      xyz="-0.325000000000007 0.901375000000002 0.331387406397839"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Top_Metal" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Lackaging">
+    <inertial>
+      <origin
+        xyz="-1.37922115839295E-07 0.000260439184406436 -0.22106537110126"
+        rpy="0 0 0" />
+      <mass
+        value="0.373244504052969" />
+      <inertia
+        ixx="0.00619580454940661"
+        ixy="-1.14148138610367E-09"
+        ixz="2.97540171867806E-09"
+        iyy="0.00619819616642874"
+        iyz="-1.72909730673878E-05"
+        izz="0.000270307716248751" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Lackaging.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.937254901960784 0.137254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Lackaging.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Lackaging"
+    type="fixed">
+    <origin
+      xyz="0 0.702000000000005 -0.0100000000000001"
+      rpy="1.5707963267949 0 -3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Lackaging" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Left_Fan">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-16 0.0203953252144142 -2.22044604925031E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.825243626112144" />
+      <inertia
+        ixx="0.00759152180746469"
+        ixy="-2.67963842023617E-18"
+        ixz="1.51788304147971E-18"
+        iyy="0.0142303156032698"
+        iyz="6.36750627774146E-18"
+        izz="0.00759152180746468" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Left_Fan.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.780392156862745 0.76078431372549 0.741176470588235 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Left_Fan.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Left_Fan"
+    type="continuous">
+    <origin
+      xyz="-0.315 0.3 -0.15"
+      rpy="3.1416 -0.98049 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Left_Fan" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="Link_Right_Fan">
+    <inertial>
+      <origin
+        xyz="0 0.0203953252144143 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.825243626112141" />
+      <inertia
+        ixx="0.00759152180746467"
+        ixy="-2.0574745116365E-18"
+        ixz="-5.63785129692462E-18"
+        iyy="0.0142303156032698"
+        iyz="2.2547798391998E-18"
+        izz="0.00759152180746466" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Right_Fan.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.780392156862745 0.76078431372549 0.741176470588235 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Right_Fan.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Right_Fan"
+    type="continuous">
+    <origin
+      xyz="0.315 0.3 -0.15"
+      rpy="3.1416 1.2132 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Right_Fan" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+</robot>
