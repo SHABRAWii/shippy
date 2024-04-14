@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link
+    name="Link_Robot_Front_Attachments">
+    <inertial>
+      <origin
+        xyz="-0.110993083185633 -0.0209688861158468 -0.00942961030516409"
+        rpy="0 0 0" />
+      <mass
+        value="0.973903374699208" />
+      <inertia
+        ixx="0.0123670881249229"
+        ixy="0.00152634507018076"
+        ixz="9.35071385864023E-07"
+        iyy="0.0163784182374264"
+        iyz="4.88372744349489E-06"
+        izz="0.00726600026096406" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Robot_Front_Attachments.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9 0.81 0.51 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Robot_Front_Attachments.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_Robot_Front_Attachments"
+    type="fixed">
+    <origin
+      xyz="0 1.54252445791832 -0.10004"
+      rpy="1.5707963267949 0 -1.57079632679489" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_Robot_Front_Attachments" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
