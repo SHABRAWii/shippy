@@ -1,4 +1,3 @@
-
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
@@ -6,6 +5,7 @@
   <version>0.0.0</version>
   <description>This is Autonomous water cleaning robot called shippy</description>
   <maintainer email="yousef.elshabrawii@gmail.com">Yousef Mohamed ElShabrawii</maintainer>
+  <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
