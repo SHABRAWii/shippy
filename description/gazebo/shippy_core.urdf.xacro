@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+  <link
+    name="base_link">
+  </link>
+  <!-- Joint connecting dummy_link to base_link -->
+  <joint name="base_link_reference_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="base_link_reference" />
+  </joint>
+
+  <link
+    name="base_link_reference">
+    <inertial>
+      <origin
+        xyz="-6.99440505513849E-15 1.10103519706159 0.00344258551504817"
+        rpy="0 0 0" />
+      <mass
+        value="2.17957713322353" />
+      <inertia
+        ixx="0.17899850438671"
+        ixy="5.05428036749201E-16"
+        ixz="-2.24166310386283E-16"
+        iyy="0.130111023279005"
+        iyz="3.03303960572226E-05"
+        izz="0.290729649302988" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link_reference">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link
+    name="Link_Side_Left">
+    <inertial>
+      <origin
+        xyz="0.104919265146604 0.101118372719001 0.996926007551461"
+        rpy="0 0 0" />
+      <mass
+        value="81.8084350434166" />
+      <inertia
+        ixx="26.245543933313"
+        ixy="-2.3094582466397E-05"
+        ixz="-0.00577226346636961"
+        iyy="26.2724801461104"
+        iyz="-0.0881450822013043"
+        izz="0.567958263795021" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.286274509803922 0.662745098039216 0.329411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link_Side_Left">
+    <material>Gazebo/Green</material>
+    <mu1 value="0.0001" />
+    <mu2 value="0.0001" />
+  </gazebo>
+  <joint
+    name="Joint_Side_Left"
+    type="fixed">
+    <origin
+      xyz="-0.535000000000017 2.01 -0.2"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link_reference" />
+    <child
+      link="Link_Side_Left" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Side_Right">
+    <inertial>
+      <origin
+        xyz="0.104919265146604 0.101118372719001 0.996926007551461"
+        rpy="0 0 0" />
+      <mass
+        value="81.8084350434166" />
+      <inertia
+        ixx="26.245543933313"
+        ixy="-2.30945824663705E-05"
+        ixz="-0.00577226346637043"
+        iyy="26.2724801461104"
+        iyz="-0.0881450822013042"
+        izz="0.567958263795021" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.286274509803922 0.662745098039216 0.329411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Side_Right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link_Side_Right">
+    <material>Gazebo/Green</material>
+    <mu1 value="0.0001" />
+    <mu2 value="0.0001" />
+  </gazebo>
+  <joint
+    name="Joint_Side_Right"
+    type="fixed">
+    <origin
+      xyz="0.324999999999983 2.01 -0.2"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link_reference" />
+    <child
+      link="Link_Side_Right" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Left_Metal">
+    <inertial>
+      <origin
+        xyz="0.565954361793534 0.132380012619458 -0.0180374997719361"
+        rpy="0 0 0" />
+      <mass
+        value="1.86329947852884" />
+      <inertia
+        ixx="0.0303193760291818"
+        ixy="-0.0118768193945372"
+        ixz="-1.0311791416408E-17"
+        iyy="0.158217746859194"
+        iyz="-1.6230919151769E-17"
+        izz="0.187968319674363" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Left_Metal.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.667 0.098 0.098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Left_Metal.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link_Left_Metal">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="Joint_Left_Metal"
+    type="fixed">
+    <origin
+      xyz="-0.375000000000015 1.76 0"
+      rpy="1.5707963267949 0 -1.57079632679489" />
+    <parent
+      link="base_link_reference" />
+    <child
+      link="Link_Left_Metal" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Right_Metal">
+    <inertial>
+      <origin
+        xyz="0.565954361793534 0.132380012619458 -0.0319625002280638"
+        rpy="0 0 0" />
+      <mass
+        value="1.86329947852884" />
+      <inertia
+        ixx="0.0303193760291818"
+        ixy="-0.0118768193945371"
+        ixz="-1.28996412691275E-18"
+        iyy="0.158217746859193"
+        iyz="-9.15073055917561E-18"
+        izz="0.187968319674362" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Right_Metal.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.667 0.098 0.098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Right_Metal.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link_Right_Metal">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <joint
+    name="Joint_Right_Metal"
+    type="fixed">
+    <origin
+      xyz="0.324999999999985 1.76000000000001 0"
+      rpy="1.5707963267949 0 -1.57079632679489" />
+    <parent
+      link="base_link_reference" />
+    <child
+      link="Link_Right_Metal" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Top_Metal">
+    <inertial>
+      <origin
+        xyz="0.325 0.0100000000000001 -0.18"
+        rpy="0 0 0" />
+      <mass
+        value="1.82" />
+      <inertia
+        ixx="0.0344933333333333"
+        ixy="-4.04776950599612E-17"
+        ixz="4.26711188683265E-17"
+        iyy="0.127111833333333"
+        iyz="-1.68612496062809E-17"
+        izz="0.0927398333333331" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Top_Metal.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9 0.15 0.15 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Top_Metal.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link_Top_Metal">
+    <material>Gazebo/RedBright</material>
+  </gazebo>
+  <joint
+    name="Joint_Top_Metal"
+    type="fixed">
+    <origin
+      xyz="-0.325000000000007 0.901375000000002 0.331387406397839"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link_reference" />
+    <child
+      link="Link_Top_Metal" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Link_Lackaging">
+    <inertial>
+      <origin
+        xyz="-1.37922115839295E-07 0.000260439184406436 -0.22106537110126"
+        rpy="0 0 0" />
+      <mass
+        value="0.373244504052969" />
+      <inertia
+        ixx="0.00619580454940661"
+        ixy="-1.14148138610367E-09"
+        ixz="2.97540171867806E-09"
+        iyy="0.00619819616642874"
+        iyz="-1.72909730673878E-05"
+        izz="0.000270307716248751" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Lackaging.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.937254901960784 0.137254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find shippy)/meshes/Link_Lackaging.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="Link_Lackaging">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <joint
+    name="Joint_Lackaging"
+    type="fixed">
+    <origin
+      xyz="0 0.702000000000005 -0.0100000000000001"
+      rpy="1.5707963267949 0 -3.14159265358979" />
+    <parent
+      link="base_link_reference" />
+    <child
+      link="Link_Lackaging" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
