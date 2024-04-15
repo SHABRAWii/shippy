@@ -40,6 +40,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="Link_Robot_Front_Attachments">
+    <material>Gazebo/ZincYellow</material>
+  </gazebo>
   <joint
     name="Joint_Robot_Front_Attachments"
     type="fixed">

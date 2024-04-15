@@ -40,6 +40,9 @@
             </geometry>
         </collision>
     </link>
+    <gazebo reference="Link_Left_Fan">
+        <material>Gazebo/Indigo</material>
+    </gazebo>
     <joint
         name="Joint_Left_Fan"
         type="continuous">
@@ -93,6 +96,9 @@
             </geometry>
         </collision>
     </link>
+    <gazebo reference="Link_Right_Fan">
+        <material>Gazebo/Indigo</material>
+    </gazebo>
     <joint
         name="Joint_Right_Fan"
         type="continuous">

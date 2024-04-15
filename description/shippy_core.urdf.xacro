@@ -50,6 +50,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="base_link_reference">
+    <material>Gazebo/Green</material>
+  </gazebo>
   <link
     name="Link_Side_Left">
     <inertial>
@@ -90,6 +93,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="Link_Side_Left">
+    <material>Gazebo/Green</material>
+  </gazebo>
   <joint
     name="Joint_Side_Left"
     type="fixed">
@@ -143,6 +149,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="Link_Side_Right">
+      <material>Gazebo/Green</material>
+  </gazebo>
   <joint
     name="Joint_Side_Right"
     type="fixed">
@@ -196,6 +205,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="Link_Left_Metal">
+    <material>Gazebo/Red</material>
+  </gazebo>
   <joint
     name="Joint_Left_Metal"
     type="fixed">
@@ -249,6 +261,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="Link_Right_Metal">
+    <material>Gazebo/Red</material>
+  </gazebo>
   <joint
     name="Joint_Right_Metal"
     type="fixed">
@@ -302,6 +317,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="Link_Top_Metal">
+    <material>Gazebo/RedBright</material>
+  </gazebo>
   <joint
     name="Joint_Top_Metal"
     type="fixed">
@@ -355,6 +373,9 @@
       </geometry>
     </collision>
   </link>
+  <gazebo reference="Link_Lackaging">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
   <joint
     name="Joint_Lackaging"
     type="fixed">
