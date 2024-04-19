@@ -42,8 +42,8 @@
   </link>
   <gazebo reference="Link_Robot_Front_Attachments">
     <material>Gazebo/ZincYellow</material>
-    <mu1 value="0.0001"/>
-    <mu2 value="0.0001"/>
+    <mu1 value="0.01"/>
+    <mu2 value="0.01"/>
   </gazebo>
   <joint
     name="Joint_Robot_Front_Attachments"
