@@ -11,7 +11,7 @@
             <wheel_diameter>0.15</wheel_diameter>
 
             <!-- Limits -->
-            <max_wheel_torque>200.0</max_wheel_torque>
+            <max_wheel_torque>100.0</max_wheel_torque>
             <max_wheel_acceleration>30</max_wheel_acceleration>
 
             <!-- Output -->
