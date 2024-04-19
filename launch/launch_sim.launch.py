@@ -6,19 +6,42 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-
+from launch.actions import DeclareLaunchArgument
+from launch.actions import OpaqueFunction
+from launch.substitutions import LaunchConfiguration as Lc
 from launch_ros.actions import Node
+from launch.actions import GroupAction
 
+def to_bool(value: str):
+    if isinstance(value, bool):
+        return value
+    if not isinstance(value, str):
+        raise ValueError('String to bool, invalid type ' + str(value))
 
+    valid = {'true':True, '1':True,
+             'false':False, '0':False}
+    
+    if value.lower() in valid:
+        return valid[value]
+    
+    raise ValueError('String to bool, invalid value: %s' % value)
 
-def generate_launch_description():
-
+def launch_setup(context, *args, **kwargs): 
+    debug = Lc('debug').perform(context)
+    namespace = Lc('namespace').perform(context)
+    x = Lc('x').perform(context)
+    y = Lc('y').perform(context)
+    z = Lc('z').perform(context)
+    roll = Lc('roll').perform(context)
+    pitch = Lc('pitch').perform(context)
+    yaw = Lc('yaw').perform(context)
+    use_sim_time = Lc('use_sim_time').perform(context)
     package_name='shippy'
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': 'true'}.items()
+                )]), launch_arguments={'use_sim_time': use_sim_time}.items()
     )
 
     # Include the Gazebo launch file, provided by the gazebo_ros package
@@ -26,18 +49,54 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
              )
+    
+    args=(
+    '-x %s -y %s -z %s -R %s -P %s -Y %s -entity %s -topic robot_description' 
+    %(x, y, z, roll, pitch, yaw, namespace)).split()
 
-    # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description',
-                                   '-entity', 'SHIPPY'],
-                        output='screen')
-
-
-
-    # Launch them all!
-    return LaunchDescription([
+    urdf_spawner = Node(
+        name = 'urdf_spawner',
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        output='screen',
+        parameters=[{'use_sim_time': to_bool(use_sim_time)}],
+        arguments=args
+    )
+    # return LaunchDescription([
+    #     rsp,
+    #     gazebo,
+    #     urdf_spawner,
+    # ])
+    # Create a list containing all actions to be included in the launch description
+    actions_list = [
         rsp,
         gazebo,
-        spawn_entity,
+        urdf_spawner
+    ]
+
+    # Return the list of actions as part of a LaunchDescription
+    return actions_list
+
+
+
+
+def generate_launch_description():
+    # TODO Try LaunchContext ?
+    return LaunchDescription([
+        DeclareLaunchArgument('debug', default_value='0'),
+
+        DeclareLaunchArgument('x', default_value='0'),
+        DeclareLaunchArgument('y', default_value='0'),
+        DeclareLaunchArgument('z', default_value='0.5'),
+        DeclareLaunchArgument('roll', default_value='0.0'),
+        DeclareLaunchArgument('pitch', default_value='0.0'),
+        DeclareLaunchArgument('yaw', default_value='0.0'),
+
+        DeclareLaunchArgument('mode', default_value='default'),
+        DeclareLaunchArgument('namespace', default_value='shippy'),
+        DeclareLaunchArgument('use_ned_frame', default_value='false'),
+        DeclareLaunchArgument('write_file_on_disk', default_value='false'),
+
+        DeclareLaunchArgument('use_sim_time', default_value='true'),
+        OpaqueFunction(function = launch_setup)
     ])
