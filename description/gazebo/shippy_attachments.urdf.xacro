@@ -1,20 +1,21 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
   <link
-    name="Link_Robot_Front_Attachments">
+    name="Link_Attach">
     <inertial>
       <origin
-        xyz="-0.110993083185633 -0.0209688861158468 -0.00942961030516409"
+        xyz="-0.00049784865130853 0.0427987016913154 0.511037262417584"
         rpy="0 0 0" />
       <mass
-        value="0.973903374699208" />
+        value="1.32876293779264" />
       <inertia
-        ixx="0.0123670881249229"
-        ixy="0.00152634507018076"
-        ixz="9.35071385864023E-07"
-        iyy="0.0163784182374264"
-        iyz="4.88372744349489E-06"
-        izz="0.00726600026096406" />
+        ixx="0.0130208817284301"
+        ixy="-4.88258049923028E-06"
+        ixz="-9.3200074052501E-07"
+        iyy="0.0225701974289401"
+        iyz="0.0015436359339137"
+        izz="0.0122028865555913" />
     </inertial>
     <visual>
       <origin
@@ -22,12 +23,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(find shippy)/meshes/Link_Robot_Front_Attachments.STL" />
+          filename="file://$(find shippy)/meshes/Link_Attach.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.9 0.81 0.51 1" />
+          rgba="1 0.937254901960784 0.137254901960784 1" />
       </material>
     </visual>
     <collision>
@@ -36,26 +37,26 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(find shippy)/meshes/Link_Robot_Front_Attachments.STL" />
+          filename="file://$(find shippy)/meshes/Link_Attach.STL" />
       </geometry>
     </collision>
   </link>
-  <gazebo reference="Link_Robot_Front_Attachments">
-    <material>Gazebo/ZincYellow</material>
-    <mu1 value="0.01"/>
-    <mu2 value="0.01"/>
-  </gazebo>
   <joint
-    name="Joint_Robot_Front_Attachments"
+    name="Joint_Attach"
     type="fixed">
     <origin
-      xyz="0 1.54252445791832 -0.10004"
-      rpy="1.5707963267949 0 -1.57079632679489" />
+      xyz="0 1.85252445791832 -0.19"
+      rpy="1.5707963267949 0 0" />
     <parent
-      link="base_link_reference" />
+      link="base_link" />
     <child
-      link="Link_Robot_Front_Attachments" />
+      link="Link_Attach" />
     <axis
       xyz="0 0 0" />
   </joint>
+  <gazebo reference="Link_Attach">
+    <material>Gazebo/ZincYellow</material>
+    <mu1 value="0.001" />
+    <mu2 value="0.001" />
+  </gazebo>
 </robot>
