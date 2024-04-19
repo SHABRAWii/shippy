@@ -62,6 +62,18 @@ def launch_setup(context, *args, **kwargs):
         parameters=[{'use_sim_time': to_bool(use_sim_time)}],
         arguments=args
     )
+    diff_drive_spawner = Node(
+        name = 'diff_drive_spawner',
+        package='controller_manager',
+        executable='spawner.py',
+        arguments=['diff_cont']
+    )
+    joint_broad_spawner = Node(
+        name = 'joint_broad_spawner',
+        package='controller_manager',
+        executable='spawner.py',
+        arguments=['joint_broad']
+    )
     # return LaunchDescription([
     #     rsp,
     #     gazebo,
@@ -69,9 +81,11 @@ def launch_setup(context, *args, **kwargs):
     # ])
     # Create a list containing all actions to be included in the launch description
     actions_list = [
-        rsp,
         gazebo,
-        urdf_spawner
+        rsp,
+        urdf_spawner,
+        diff_drive_spawner,
+        joint_broad_spawner,
     ]
 
     # Return the list of actions as part of a LaunchDescription
