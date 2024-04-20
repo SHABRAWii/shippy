@@ -34,6 +34,7 @@
         </visual>
     </link>
     <gazebo reference="base_link_reference">
+        <material>Gazebo/White</material>
     </gazebo>
 
 
@@ -60,7 +61,7 @@
             </material>
         </visual>
     </link>
-    <gazebo reference="Link_SIdes">
+    <gazebo reference="link_visual_sides">
         <material>Gazebo/Green</material>
     </gazebo>
 
@@ -112,7 +113,7 @@
             </material>
         </visual>
     </link>
-    <gazebo reference="Link_Attach">
+    <gazebo reference="link_visual_attach">
         <material>Gazebo/ZincYellow</material>
     </gazebo>
 
