@@ -6,11 +6,12 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.actions import DeclareLaunchArgument
-from launch.actions import OpaqueFunction
+from launch.actions import DeclareLaunchArgument, RegisterEventHandler
+from launch.actions import OpaqueFunction, ExecuteProcess
 from launch.substitutions import LaunchConfiguration as Lc
 from launch_ros.actions import Node
 from launch.actions import GroupAction
+from launch.event_handlers import OnProcessExit
 
 def to_bool(value: str):
     if isinstance(value, bool):
@@ -36,18 +37,21 @@ def launch_setup(context, *args, **kwargs):
     pitch = Lc('pitch').perform(context)
     yaw = Lc('yaw').perform(context)
     use_sim_time = Lc('use_sim_time').perform(context)
+    use_ros2_control = Lc('use_ros2_control').perform(context)
     package_name='shippy'
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': use_sim_time}.items()
+                )]), launch_arguments={'use_sim_time': use_sim_time, 'use_ros2_control': use_ros2_control}.items()
     )
 
+    gazebo_params_file = os.path.join(get_package_share_directory('shippy'), 'config', 'gazebo_params.yaml')
     # Include the Gazebo launch file, provided by the gazebo_ros package
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
+                    get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py'
+                )]), launch_arguments={'extra_gazebo_args': '--ros-args --params-file ' + gazebo_params_file}.items()
              )
     
     args=(
@@ -74,6 +78,27 @@ def launch_setup(context, *args, **kwargs):
         executable='spawner.py',
         arguments=['joint_broad']
     )
+    set_contoller_manager_use_sim_time = ExecuteProcess(
+        cmd=['ros2', 'param', 'set', '/controller_manager', 'use_sim_time', 'true'],
+        output='screen')
+    delayed_set_contoller_manager_use_sim_time = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=urdf_spawner,
+            on_exit=[set_contoller_manager_use_sim_time],
+        )
+    )
+    delayed_diff_drive_spawner = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=set_contoller_manager_use_sim_time,
+            on_exit=[diff_drive_spawner],
+        )
+    )
+    delayed_joint_broad_spawner = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=set_contoller_manager_use_sim_time,
+            on_exit=[joint_broad_spawner],
+        )
+    )
     # return LaunchDescription([
     #     rsp,
     #     gazebo,
@@ -84,9 +109,13 @@ def launch_setup(context, *args, **kwargs):
         gazebo,
         rsp,
         urdf_spawner,
-        diff_drive_spawner,
-        joint_broad_spawner,
     ]
+    if use_ros2_control == 'true':
+        actions_list.extend([
+            delayed_set_contoller_manager_use_sim_time,
+            delayed_diff_drive_spawner,
+            delayed_joint_broad_spawner
+        ])
 
     # Return the list of actions as part of a LaunchDescription
     return actions_list
@@ -112,5 +141,6 @@ def generate_launch_description():
         DeclareLaunchArgument('write_file_on_disk', default_value='false'),
 
         DeclareLaunchArgument('use_sim_time', default_value='true'),
+        DeclareLaunchArgument('use_ros2_control', default_value='true'),
         OpaqueFunction(function = launch_setup)
     ])
