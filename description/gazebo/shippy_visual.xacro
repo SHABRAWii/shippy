@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="inertial_macros.xacro" />
+
+    <xacro:property name="chassis_length" value="1.07" />
+    <xacro:property name="chassis_width" value="2.01" />
+    <xacro:property name="chassis_height" value="0.2" />
+    <xacro:property name="chassis_mass" value="1.0" />
+    <xacro:property name="caster_wheel_radius" value="0.01" />
+    <xacro:property name="caster_wheel_mass" value="0.01" />
+    <xacro:property name="caster_wheel_offset_x" value="0.075" />
+    <xacro:property name="caster_wheel_offset_z"
+        value="${wheel_offset_z - wheel_radius + caster_wheel_radius}" />
+
+
+    <!-- ! TANK -->
+    <joint name="joint_visual_base_link" type="fixed">
+        <parent link="base_link" />
+        <child link="link_visual_base_link" />
+        <origin xyz="0 0 0" rpy="0 0 ${-pi/2}" />
+    </joint>
+    <link name="link_visual_base_link">
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh filename="file://$(find shippy)/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 0.4" />
+            </material>
+        </visual>
+    </link>
+    <gazebo reference="base_link_reference">
+    </gazebo>
+
+
+    <!-- ! Green Sides -->
+    <joint name="joint_visual_sides" type="fixed">
+        <origin
+            xyz="2.01 0.535000000000017 -0.19"
+            rpy="1.5707963267949 0 -1.57079632679489" />
+        <parent link="base_link" />
+        <child link="link_visual_sides" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="link_visual_sides">
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="file://$(find shippy)/meshes/Link_Sides.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.286274509803922 0.662745098039216 0.329411764705882 1" />
+            </material>
+        </visual>
+    </link>
+    <gazebo reference="Link_SIdes">
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+
+    <!-- ! RED Metal -->
+    <joint name="Joint_visual_metal" type="fixed">
+        <origin
+            xyz="1.76 0.375000000000015 0.0100000000000002"
+            rpy="1.5707963267949 0 ${2*-1.57079632679489}" />
+        <parent link="base_link" />
+        <child link="link_visual_metal" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="link_visual_metal">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="file://$(find shippy)/meshes/Link_Metal.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.667 0.098 0.098 1" />
+            </material>
+        </visual>
+    </link>
+    <gazebo reference="link_visual_metal">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+
+    <!-- ! Yellow Attachments -->
+    <joint name="Joint_visual_attach" type="fixed">
+        <origin
+            xyz="1.85252445791832 0 -0.19"
+            rpy="1.5707963267949 0 -1.5707963267949" />
+        <parent link="base_link" />
+        <child link="link_visual_attach" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="link_visual_attach">
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh filename="file://$(find shippy)/meshes/Link_Attach.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 0.937254901960784 0.137254901960784 1" />
+            </material>
+        </visual>
+    </link>
+    <gazebo reference="Link_Attach">
+        <material>Gazebo/ZincYellow</material>
+    </gazebo>
+
+
+    <!-- ! Orange fan Attachments -->
+    <xacro:macro name="visual_fan" params="*origin">
+        <visual>
+            <xacro:insert_block name="origin"/>
+            <geometry>
+                <mesh filename="file://$(find shippy)/meshes/Link_Left_Fan.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.780392156862745 0.76078431372549 0.741176470588235 1" />
+            </material>
+        </visual>
+    </xacro:macro>
+
+</robot>
