@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
-  name="Shippy">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Shippy">
 
-  <xacro:include filename="shippy_core.urdf.xacro" />
-  <xacro:include filename="shippy_attachments.urdf.xacro" />
-  <xacro:include filename="shippy_fans.urdf.xacro" />
-  <!-- <xacro:include filename="gazebo_control.xacro" /> -->
-  <xacro:include filename="ros2_control.xacro" />
+
+
+  <xacro:arg name="use_ros2_control" default="true"/>
+
+
+  <xacro:if value="$(arg use_ros2_control)">
+      <xacro:include filename="ros2_control.xacro" />
+  </xacro:if>
+  <xacro:unless value="$(arg use_ros2_control)">
+      <xacro:include filename="gazebo_control.xacro" />
+  </xacro:unless>
+
+  <xacro:include filename="shippy_visual.xacro" />
+  <xacro:include filename="shippy_collision.xacro" />
+  
   <xacro:include filename="lidar.xacro" />
 
 </robot>
