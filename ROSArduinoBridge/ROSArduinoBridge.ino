@@ -107,23 +107,25 @@ int runCommand() {
     
 #ifdef USE_BASE
   case READ_ENCODERS:
-    Serial.print("No encoder");
+    Serial.println("0 0");
     break;
    case RESET_ENCODERS:
-    Serial.println("No encoder");
+    Serial.println("OK");
     break;
   case MOTOR_SPEEDS:
-    Serial.println("No Speed change"); 
+    if(arg)
+    lastMotorCommand = millis();
+    setMotorSpeeds(arg1, arg2);
+    Serial.println("OK"); 
     break;
   case MOTOR_RAW_PWM:
-    /* Reset the auto stop timer */
     if(arg)
     lastMotorCommand = millis();
     setMotorSpeeds(arg1, arg2);
     Serial.println("OK"); 
     break;
   case UPDATE_PID:
-    Serial.println("No PID used");
+    Serial.println("OK");
     break;
 #endif
   default:
