@@ -79,7 +79,7 @@ def launch_setup(context, *args, **kwargs):
         arguments=['joint_broad']
     )
     set_contoller_manager_use_sim_time = ExecuteProcess(
-        cmd=['ros2', 'param', 'set', '/controller_manager', 'use_sim_time', 'true'],
+        cmd=['ros2', 'param', 'set', '/controller_manager', 'use_sim_time', use_sim_time],
         output='screen')
     delayed_set_contoller_manager_use_sim_time = RegisterEventHandler(
         event_handler=OnProcessExit(
